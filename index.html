@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micofresh AS | International Merchants — Norway</title>
+    <meta name="description"
+        content="Micofresh AS is a registered Norwegian international merchant with direct relationships with top-tier producers of food commodities from Brazil and Europe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ── Design Tokens ── */
+        :root {
+            --navy: #0d2340;
+            --navy-mid: #1a365d;
+            --navy-light: #2c5282;
+            --accent: #b7860b;
+            --accent-lt: #d4a017;
+            --slate: #4a5568;
+            --slate-lt: #718096;
+            --divider: #e2e8f0;
+            --white: #ffffff;
+            --off-white: #f7fafc;
+            --text: #1a202c;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ── Utility ── */
+        .container {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .divider-line {
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-lt));
+            margin: 1.2rem 0 1.8rem;
+            border-radius: 2px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 35, 64, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.3s var(--ease);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the Logo */
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1010;
+            height: 100%;
+        }
+
+        .logo img {
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s var(--ease);
+        }
+
+        .hamburger {
+            position: absolute; 
+            right: 0; /* Keeps hamburger on the far right */
+            top: 50%; /* perfectly centers vertically */
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1010;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: currentColor;
+            transition: 0.3s var(--ease);
+            border-radius: 2px;
+        }
+
+        /* Hamburger Animation */
+        .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(13, 35, 64, 0.98);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1005;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+        }
+
+        .nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color .25s var(--ease), transform .2s var(--ease);
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            padding: 1rem 3rem;
+            border: 1px solid var(--accent);
+            color: var(--accent-lt) !important;
+            border-radius: 2px;
+            margin-top: 1rem;
+        }
+        
+        .nav-cta:hover {
+            background: var(--accent);
+            color: var(--white) !important;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            overflow: hidden;
+            background-color: var(--navy);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('images/hero_network.png') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(13, 35, 64, 0.9) 0%, rgba(13, 35, 64, 0.5) 100%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 i {
+            color: var(--accent-lt);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s var(--ease);
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background: #9a700a;
+            transform: translateY(-2px);
+        }
+
+        /* ── SECTIONS ── */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .stats-bar {
+            background: var(--navy);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent-lt);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.5rem;
+        }
+
+        .origin-grid, .compliance-grid, .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .origin-img-wrap img {
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--divider);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(13, 35, 64, 0.1);
+        }
+
+        .product-img-wrap {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s var(--ease);
+        }
+        
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        .spec-table {
+            width: 100%;
+            font-size: 0.85rem;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .spec-table td {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .spec-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin: 0 auto 0.1rem;
+        }
+
+        .footer-info {
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        /* ── DESKTOP REFINEMENTS (992px+) ── */
+        @media (min-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+                max-width: 800px;
+            }
+
+            .hero-sub {
+                font-size: 1.15rem;
+                max-width: 600px;
+            }
+
+            .section-padding {
+                padding: 8rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .origin-grid, .compliance-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 6rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-info {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header>
+        <div class="container">
+            <!-- ▼▼▼ ADJUST HEADER HEIGHT (DEAD SPACE) HERE ▼▼▼ -->
+            <!-- The 'height' here controls the thickness of the dark blue bar independently of the logo size -->
+            <nav style="height: 100px;">
+                
+                <a href="#" class="logo">
+                    <!-- ▼▼▼ ADJUST LOGO VISUAL SIZE HERE ▼▼▼ -->
+                    <!-- Change 'scale(1.2)' to scale(1.5), scale(2.0), etc., to magnify the logo -->
+                    <!-- Because we are using 'scale', the logo will grow visually without stretching the header bar above -->
+                    <img src="images/micofresh_logo_light.png" alt="Micofresh AS" style="height: 100%; transform: scale(2.0);">
+                </a>
+
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="hero" class="hero">
+        <div id="particles-js" class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-inner">
+                <h1><i>Premium</i> products and service.</h1>
+                <p class="hero-sub">Micofresh AS connects institutional buyers worldwide with Grade A commodities from the world's finest production regions — operating under full AML &amp; KYC compliance.</p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn-primary">Explore Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ STATS BAR ═══════════ -->
+
+
+    <!-- ═══════════ ORIGIN ═══════════ -->
+    <section id="about" class="origin-section section-padding">
+        <div class="container">
+            <div class="origin-grid">
+                <div class="origin-content">
+                    <span class="section-label">Our Origin</span>
+                    <h2>Trade integrity from Norway to the world.</h2>
+                    <div class="divider-line"></div>
+                    <p>We provide our partners the highest level of certainty and reliability in international trade. By connecting buyers directly to producers, we eliminate unnecessary complexity.</p>
+                    <p style="margin-top: 1rem;">At the core of Micofresh is a commitment to integrity and exceptional customer service, ensuring seamless transactions across global borders.</p>
+                </div>
+                <div class="origin-img-wrap">
+                    <img src="images/origin_trade_symbol.png" alt="Global trade network">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PRODUCTS ═══════════ -->
+    <section id="products" class="products-section section-padding" style="background: var(--off-white);">
+        <div class="container">
+            <div style="text-align:center; max-width: 700px; margin: 0 auto 4rem;">
+                <span class="section-label">Product Portfolio</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy);">Verified Grade A Standards</h2>
+                <p style="color: var(--slate); margin-top: 1rem;">Direct relationships with certified mills and farms in Brazil, Europe, and Asia.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- ICUMSA 45 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_sugar.png" alt="ICUMSA 45 Sugar">
+                        <div style="position:absolute; top:1rem; right:1rem; background: var(--navy); color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">BRAZIL</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">ICUMSA 45 Sugar</h3>
+                        <p style="font-size:0.8rem; color: var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:1rem;">Refined White Cane</p>
+                        <table class="spec-table">
+                            <tr><td>Polarization</td><td>99.80% min</td></tr>
+                            <tr><td>Moisture</td><td>0.04% max</td></tr>
+                            <tr><td>ICUMSA Rating</td><td>45 RBU</td></tr>
+							<tr><td>GACC registration </td><td>Yes</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- CHICKEN PAWS -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_chicken.png" alt="Chicken Paws">
+                        <div style="position:absolute; top:1rem; right:1rem; background: var(--navy); color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">BRAZIL</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">Chicken Paws</h3>
+                        <p style="font-size:0.8rem; color: var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:1rem;">Grade A Frozen IQF</p>
+                        <table class="spec-table">
+                            <tr><td>Weight/Piece</td><td>30 – 45g</td></tr>
+                       
+                            <tr><td>Freezing</td><td>Blast -40°C</td></tr>
+							<tr><td>GACC registration</td><td>Yes</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- BEEF -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_beef.png" alt="Polish Beef">
+                        <div style="position:absolute; top:1rem; right:1rem; background: #5a3e8e; color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">POLAND (EU)</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">Premium Beef</h3>
+                        <p style="font-size:0.8rem; color: var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:1rem;">Antibiotic-Free Grade A</p>
+                        <table class="spec-table">
+                            <tr><td>Health Cert</td><td>Official GIW</td></tr>
+                            <tr><td>Cuts</td><td>Primary &amp; Whole</td></tr>
+                            <tr><td>Method</td><td>Halal Available</td></tr>
+                        </table>
+                    </div>
+                </div>
+				
+				
+				
+				  <!-- CHICKEN -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_chicken.jpg" alt="Chicken">
+                        <div style="position:absolute; top:1rem; right:1rem; background: #5a3e8e; color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">POLAND (EU)</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">Chicken</h3>
+                        <p style="font-size:0.8rem; color: var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:1rem;">Antibiotic-Free</p>
+                        <table class="spec-table">
+                            
+                            <tr><td>Cuts</td><td>All cuts available</td></tr>
+                            <tr><td>Method</td><td>Halal Available</td></tr>
+                        </table>
+                    </div>
+                </div>
+				
+				
+				  <!-- VANILLA INDONESIA -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_vanilla_indonesia.jpg" alt="Vanilla ">
+                        <div style="position:absolute; top:1rem; right:1rem; background: #5a3e8e; color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">INDONESIA</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">Planifolia vanilla</h3>
+                       
+                        <table class="spec-table">
+                            <tr><td>Origin</td><td>Indonesia</td></tr>
+                            <tr><td>Grade</td><td>A</td></tr>
+                            <tr><td>Length</td><td>18 cm up</td></tr>
+                        </table>
+                    </div>
+                </div>
+				
+				  <!-- BOURBON VANILLA -->
+                    <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/product_vanilla_indonesia.jpg" alt="Bourbon Vanilla ">
+                        <div style="position:absolute; top:1rem; right:1rem; background: #5a3e8e; color:white; font-size:0.6rem; padding: 0.3rem 0.6rem; font-weight:700; border-radius:2px;">MADAGASCAR</div>
+                    </div>
+                    <div class="product-body">
+                        <h3 style="font-size: 1.1rem; color: var(--navy);">Bourbon vanilla</h3>
+                       
+                        <table class="spec-table">
+                            <tr><td>Origin</td><td>Madagsacar</td></tr>
+                            <tr><td>Grade</td><td>A</td></tr>
+                            <tr><td>Length</td><td>14 cm up</td></tr>
+                        </table>
+                    </div>
+                </div>
+				
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy);">Partner With Us</h2>
+                <p style="color: var(--slate);">Direct-to-producer access for institutional global commodity trading.</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form action="https://formsubmit.co/post@micofresh.com" method="POST" style="display:flex; flex-direction:column; gap:1.2rem;">
+                    <input type="text" name="Name" placeholder="Company Name" required style="padding: 1rem; border: 1px solid var(--divider); border-radius: 2px;">
+                    <input type="email" name="Email" placeholder="Business Email" required style="padding: 1rem; border: 1px solid var(--divider); border-radius: 2px;">
+                    <textarea name="Message" placeholder="Specification / Requirements" rows="5" required style="padding: 1rem; border: 1px solid var(--divider); border-radius: 2px;"></textarea>
+                    <button type="submit" class="btn-primary" style="border:none; cursor:pointer; width:100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        <div class="container">
+            <img src="images/micofresh_logo_light.png" alt="Micofresh" class="footer-logo" style="height: 160px; width: auto;">
+            <div class="footer-info">
+                <span>St Olavs gate 40 B, 3112 Tønsberg, Norway</span>
+                <span>Org No: 935 167 078</span>
+                <span>post@micofresh.com</span>
+            </div>
+            <p style="font-size: 0.75rem; opacity: 0.5;">&copy; 2026 Micofresh AS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Toggle menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'initial';
+        });
+
+        // Close menu on link click
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'initial';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'initial';
+            }
+        });
+    </script>
+
+    <!-- Particles.js Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#d4a017" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.4 },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#d4a017", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "out_mode": "out" }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false } },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+
+</html>
